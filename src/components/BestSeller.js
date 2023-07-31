@@ -6,53 +6,29 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
+import axios from 'axios';
 
-const bestsellerData = [
 
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },{
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },{
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  // Add more bestseller data here...
-];
-
+const baseURL = "https://bookify-back-end.vercel.app/books/get";
 const BestsellerSection = () => {
+
+  const [bestsellerData,setBestSellerData] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`${baseURL}/all`).then((response) => {
+      // Make sure the response data is an object
+      if (typeof response.data === 'object' && response.data !== null) {
+        // Convert the object to an array
+        const bookArray = Object.values(response.data);
+        console.log(bookArray);
+        setBestSellerData(bookArray[2]);
+      } else {
+        console.error('Data received from API is not an object:', response.data);
+      }
+    }).catch((error) => {
+      console.error('Error fetching book data:', error);
+    });
+  }, []);
   return (
     <Container maxWidth="md" style={{ padding: '50px 0' }}>
       <Typography variant="h2" gutterBottom>
@@ -66,11 +42,11 @@ const BestsellerSection = () => {
                 component="img"
                 height="140"
                 image={book.image}
-                alt={book.title}
+                alt={book.name}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {book.title}
+                  {book.name}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
                   {book.author}

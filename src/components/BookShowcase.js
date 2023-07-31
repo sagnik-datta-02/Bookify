@@ -7,94 +7,112 @@ import {Button , CardActions, Divider} from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-material-ui-carousel'; // You can use any carousel library
+import axios from "axios";
 
-const bookData = [
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'book1.jpg', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'book2.jpg', // Replace with the actual image path
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'book1.jpg', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'book2.jpg', // Replace with the actual image path
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'book1.jpg', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'book2.jpg', // Replace with the actual image path
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'book1.jpg', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'book2.jpg', // Replace with the actual image path
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'Author Name 1',
-    price: '$10.99',
-    image: 'book1.jpg', // Replace with the actual image path
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'Author Name 2',
-    price: '$12.99',
-    image: 'book2.jpg', // Replace with the actual image path
-  },];
+
+const baseURL = "https://bookify-back-end.vercel.app/books/get";
 
 const BookShowcase = () => {
+  const [bookData,setBookData] = React.useState([
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Otvorena_knjiga.JPG', // Replace with the actual image path
+    },
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'book1.jpg', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'book2.jpg', // Replace with the actual image path
+    },
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'book1.jpg', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'book2.jpg', // Replace with the actual image path
+    },
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'book1.jpg', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'book2.jpg', // Replace with the actual image path
+    },
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'book1.jpg', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'book2.jpg', // Replace with the actual image path
+    },
+    {
+      id: 1,
+      title: 'Book Title 1',
+      author: 'Author Name 1',
+      price: '$10.99',
+      image: 'book1.jpg', // Replace with the actual image path
+    },
+    {
+      id: 2,
+      title: 'Book Title 2',
+      author: 'Author Name 2',
+      price: '$12.99',
+      image: 'book2.jpg', // Replace with the actual image path
+    },]);
+    React.useEffect(() => {
+      axios.get(`${baseURL}/all`).then((response) => {
+        // Make sure the response data is an object
+        if (typeof response.data === 'object' && response.data !== null) {
+          // Convert the object to an array
+          const bookArray = Object.values(response.data);
+          console.log(bookArray);
+          setBookData(bookArray[2]);
+        } else {
+          console.error('Data received from API is not an object:', response.data);
+        }
+      }).catch((error) => {
+        console.error('Error fetching book data:', error);
+      });
+    }, []);
   return (
     <Container maxWidth="md">
       <Typography variant="h2" gutterBottom>
@@ -122,12 +140,12 @@ const BookShowcase = () => {
                 objectFit: 'contain', // Ensure the image covers the entire area
               }}
               image={book.image}
-              alt={book.title}
+              alt={book.name}
             />
             <Divider />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {book.title}
+                {book.name}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
                 {book.author}
