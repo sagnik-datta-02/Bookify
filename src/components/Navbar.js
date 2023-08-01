@@ -99,7 +99,7 @@ export default function PrimarySearchAppBar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+    <Menu disabled
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
