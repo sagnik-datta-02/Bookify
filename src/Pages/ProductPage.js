@@ -72,12 +72,10 @@ const BookProductPage = () => {
         
         
       </Paper>
-        <Container maxWidth="md">
-          <BestsellerSection/>
-        </Container>
-      <Footer/>
+       <BestsellerSection/>
+      
       </Container>
-        
+        <Footer/>
    </>
   );
 };
