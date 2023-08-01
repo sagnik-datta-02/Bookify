@@ -7,11 +7,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import axios from 'axios';
-
+import { useParams,useNavigate } from 'react-router-dom';
 
 const baseURL = "https://bookify-back-end.vercel.app/books/get";
 const NewArrivalsSection = () => {
-
+    const navigate= useNavigate();
   const [newarrivalData, setNewArrivalData] = React.useState([]);
 
   React.useEffect(() => {
@@ -66,10 +66,10 @@ const NewArrivalsSection = () => {
                 display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-between',
               
               }}>
-                <Button variant="outlined" color="primary" style={{padding:1 , paddingLeft:1}}>
+                <Button variant="outlined" color="primary" style={{padding:1 , paddingLeft:1}} onClick={()=>navigate(`/book/${book._id}`)}>
                   Details
                 </Button>
-                <Button variant="contained" color="primary" style={{padding:1}}>
+                <Button variant="contained" color="primary" style={{padding:1}} disabled>
                   Cart
                 </Button>
               </div>

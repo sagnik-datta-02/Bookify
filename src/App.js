@@ -6,15 +6,19 @@ import AllBooksPage from "./Pages/AllBooks";
 import LandingPage from "./Pages/LandingPage";
 import BestSellerPage from "./Pages/BestSellerPage";
 import NewArrivalsPage from "./Pages/NewArrivalsPage";
+import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   return (
+    
     <BrowserRouter>
+    <ScrollToTop/>
       <Routes>
         <Route exact path="/" element={<LandingPage />}/>
-          <Route exact path="/allbooks" element={<AllBooksPage />} />
-          <Route exact path="/book" element={<BookProductPage />} />
+          <Route exact path="/allbooks/" element={<AllBooksPage />} />
+          <Route exact path="/book/:id" element={<BookProductPage />} />
           <Route exact path="/bestsellers" element={<BestSellerPage />} />
           <Route exact path="/newarrivals" element={<NewArrivalsPage />} />
+          
       </Routes>
     </BrowserRouter>
   );

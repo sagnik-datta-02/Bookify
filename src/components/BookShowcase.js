@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Carousel from 'react-material-ui-carousel'; // You can use any carousel library
 import axios from "axios";
-
+import { useParams,useNavigate } from 'react-router-dom';
 
 const baseURL = "https://bookify-back-end.vercel.app/books/get";
 
@@ -98,13 +98,15 @@ const BookShowcase = () => {
       price: '$12.99',
       image: 'book2.jpg', // Replace with the actual image path
     },]);
+    const navigate= useNavigate();
     React.useEffect(() => {
-      axios.get(`${baseURL}/all`).then((response) => {
+      axios.get(`${baseURL}/genre/Romantic`).then((response) => {
         // Make sure the response data is an object
         if (typeof response.data === 'object' && response.data !== null) {
           // Convert the object to an array
           const bookArray = Object.values(response.data);
           console.log(bookArray);
+          
           setBookData(bookArray[2]);
         } else {
           console.error('Data received from API is not an object:', response.data);
@@ -156,10 +158,10 @@ const BookShowcase = () => {
             </CardContent>
           
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Button variant="outlined" color="primary">
+                <Button variant="outlined" color="primary" onClick={() => navigate(`/book/${book._id}`)}>
                   Details
                 </Button>
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" disabled>
                   Cart
                 </Button>
               </div>
