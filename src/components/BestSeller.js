@@ -12,7 +12,7 @@ import axios from 'axios';
 const baseURL = "https://bookify-back-end.vercel.app/books/get";
 const BestsellerSection = () => {
 
-  const [bestsellerData,setBestSellerData] = React.useState([]);
+  const [bestsellerData, setBestSellerData] = React.useState([]);
 
   React.useEffect(() => {
     axios.get(`${baseURL}/all`).then((response) => {
@@ -29,6 +29,7 @@ const BestsellerSection = () => {
       console.error('Error fetching book data:', error);
     });
   }, []);
+
   return (
     <Container maxWidth="md" style={{ padding: '50px 0' }}>
       <Typography variant="h2" gutterBottom>
@@ -37,25 +38,32 @@ const BestsellerSection = () => {
       <Grid container spacing={3}>
         {bestsellerData.map((book) => (
           <Grid item xs={12} sm={6} md={4} key={book.id}>
-            <Card>
+            <Card sx={{ height: 400 }}>
               <CardMedia
                 component="img"
-                height="140"
+                sx={{
+
+                  height: 200,
+                  objectFit: 'contain',
+                }}
                 image={book.image}
                 alt={book.name}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h6" component="div" sx={{height:55, mb:2}}>
                   {book.name}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
                   {book.author}
                 </Typography>
                 <Typography variant="h6" color="text.primary">
-                  {book.price}
+                  Rs. {book.price}
                 </Typography>
               </CardContent>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{
+                display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-between',
+              
+              }}>
                 <Button variant="outlined" color="primary">
                   Details
                 </Button>

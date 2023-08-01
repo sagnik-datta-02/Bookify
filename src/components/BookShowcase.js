@@ -128,7 +128,7 @@ const BookShowcase = () => {
               flexDirection: 'column',
              // alignItems: 'center', // Center the content horizontally
               justifyContent: 'center', // Center the content vertically
-             // height: '100%', // Ensure that the cards have equal height within the carousel
+             height: '100%', // Ensure that the cards have equal height within the carousel
               boxShadow: 'none',
             }}
           >
@@ -136,22 +136,22 @@ const BookShowcase = () => {
               component="img"
               sx={{
                 
-                height: 300, // Set the desired height (e.g., 200px)
-                objectFit: 'contain', // Ensure the image covers the entire area
+                height: 300, 
+                objectFit: 'contain', 
               }}
               image={book.image}
               alt={book.name}
             />
             <Divider />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h6" component="div" sx={{height:55}}>
                 {book.name}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
                 {book.author}
               </Typography>
               <Typography variant="h6" color="text.primary">
-                {book.price}
+                Rs.{book.price}
               </Typography>
             </CardContent>
           
