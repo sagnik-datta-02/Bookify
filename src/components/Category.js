@@ -3,21 +3,17 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import {useNavigate} from "react-router-dom";
 const MenuButtons = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
+  const navigate = useNavigate();
   const handleHotsellersClick = () => {
-    // Handle click for Hotsellers button, navigate to the corresponding page
-    // Replace 'hotsellers-page' with the actual path of your Hotsellers page
-    // For example: history.push('/hotsellers');
+    navigate("/bestsellers");
   };
 
   const handleNewArrivalsClick = () => {
-    // Handle click for New Arrivals button, navigate to the corresponding page
-    // Replace 'new-arrivals-page' with the actual path of your New Arrivals page
-    // For example: history.push('/new-arrivals');
+    navigate("/newarrivals");
   };
 
   const handleGenresClick = () => {
@@ -27,23 +23,21 @@ const MenuButtons = () => {
   };
 
   const handleAllBooksClick = () => {
-    // Handle click for All Books button, navigate to the corresponding page
-    // Replace 'all-books-page' with the actual path of your All Books page
-    // For example: history.push('/all-books');
+    navigate("/allbooks");
   };
 
   return (
-    <Box display="flex" flexDirection={isSmallScreen ? 'column' : 'row'} gap={1} justifyContent="center" mt={2}>
+    <Box display="flex" flexDirection={isSmallScreen ? 'column' : 'row'} gap={3} justifyContent="center" m={2}>
       <Button variant="contained" color="primary" onClick={handleHotsellersClick}>
-        Hotsellers
+        BestSellers
       </Button>
       <Button variant="contained" color="primary" onClick={handleNewArrivalsClick}>
         New Arrivals
       </Button>
-      <Button variant="contained" color="primary" onClick={handleGenresClick}>
+      <Button variant="contained" color="primary" onClick={handleGenresClick} disabled>
         Genres
       </Button>
-      <Button variant="contained" color="primary" onClick={handleAllBooksClick}>
+      <Button  variant="contained" color="primary" onClick={handleAllBooksClick}>
         All Books
       </Button>
     </Box>

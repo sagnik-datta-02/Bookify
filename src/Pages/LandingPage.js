@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useNavigate} from "react-router-dom"
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -10,6 +10,7 @@ import BestsellerSection from '../components/BestSeller';
 import Footer from '../components/Footer';
 import MenuButtons from '../components/Category';
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <div>
       {/* Navbar */}
@@ -30,7 +31,7 @@ const LandingPage = () => {
                 collection of bestsellers, new arrivals, and genres for all book
                 lovers. Explore and find your next great read today!
               </Typography>
-              <Button variant="contained" color="primary" size="large">
+              <Button onClick={()=>navigate("/allbooks")} variant="contained" color="primary" size="large">
                 Explore Books
               </Button>
             </Grid>

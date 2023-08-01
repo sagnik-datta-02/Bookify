@@ -13,10 +13,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Logo from '../Blue And Yellow Simple Book Store Logo (1).svg'
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-
+  const navigate= useNavigate();
   const [leftMenuOpen, setLeftMenuOpen] = React.useState(null);
 
   // Function to handle opening the left-side menu
@@ -175,13 +177,15 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
           
             <img src={Logo} alt="Logo" style={{height:40 ,width:40}}/>
-         
+            <IconButton size="large"  color="inherit" onClick={()=>navigate("/")}>
+                <HomeIcon  />
+            </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
 
-            sx={{ ml:1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ ml:1, display: { xs: 'none', sm: 'block' } }  }
           >
             Bookify
           </Typography>
@@ -196,7 +200,7 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit" disabled>
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
@@ -205,6 +209,7 @@ export default function PrimarySearchAppBar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              disabled
             >
               <Badge badgeContent={0} color="error">
                 <ShoppingCartIcon />
@@ -218,6 +223,7 @@ export default function PrimarySearchAppBar() {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              disabled
             >
               <AccountCircle />
             </IconButton>

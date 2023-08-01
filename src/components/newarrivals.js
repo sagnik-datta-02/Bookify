@@ -10,9 +10,9 @@ import axios from 'axios';
 
 
 const baseURL = "https://bookify-back-end.vercel.app/books/get";
-const BestsellerSection = () => {
+const NewArrivalsSection = () => {
 
-  const [bestsellerData, setBestSellerData] = React.useState([]);
+  const [newarrivalData, setNewArrivalData] = React.useState([]);
 
   React.useEffect(() => {
     axios.get(`${baseURL}/all`).then((response) => {
@@ -21,8 +21,8 @@ const BestsellerSection = () => {
         // Convert the object to an array
         const bookArray = Object.values(response.data);
         console.log(bookArray);
-        const bestsellers = bookArray[2].filter((book) => book.tags.includes('bestseller'));
-        setBestSellerData(bestsellers);
+        const bestsellers = bookArray[2].filter((book) => book.tags.includes('new arrivals'));
+        setNewArrivalData(bestsellers);
         // setBestSellerData(bookArray[2]);
       } else {
         console.error('Data received from API is not an object:', response.data);
@@ -35,10 +35,10 @@ const BestsellerSection = () => {
   return (
     <Container maxWidth="md" style={{ padding: '50px 0' }}>
       <Typography variant="h2" gutterBottom>
-        BestSellers
+        New Arrivals
       </Typography>
       <Grid container spacing={3}>
-        {bestsellerData.map((book) => (
+        {newarrivalData.map((book) => (
           <Grid item xs={12} sm={6} md={4} key={book.id}>
             <Card sx={{ height: 400 }}>
               <CardMedia
@@ -81,4 +81,4 @@ const BestsellerSection = () => {
   );
 };
 
-export default BestsellerSection;
+export default NewArrivalsSection;
