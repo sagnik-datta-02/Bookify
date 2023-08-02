@@ -103,7 +103,7 @@ const BookShowcase = () => {
       axios.get(`${baseURL}/genre/Romantic`).then((response) => {
         if (typeof response.data === 'object' && response.data !== null) {
           const bookArray = Object.values(response.data);
-          console.log(bookArray);
+         // console.log(bookArray);
           
           setBookData(bookArray[2]);
         } else {

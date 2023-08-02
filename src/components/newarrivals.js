@@ -18,7 +18,7 @@ const NewArrivalsSection = () => {
     axios.get(`${baseURL}/all`).then((response) => {
       if (typeof response.data === 'object' && response.data !== null) {
         const bookArray = Object.values(response.data);
-        console.log(bookArray);
+        // console.log(bookArray);
         const bestsellers = bookArray[2].filter((book) => book.tags.includes('new arrivals'));
         setNewArrivalData(bestsellers);
         // setBestSellerData(bookArray[2]);

@@ -19,7 +19,7 @@ const AllBooksShowcase = () => {
     axios.get(`${baseURL}/all`).then((response) => {
       if (typeof response.data === 'object' && response.data !== null) {
         const bookArray = Object.values(response.data);
-        console.log(bookArray);
+        // console.log(bookArray);
         setAllBookData(bookArray[2]);
       } else {
         console.error('Data received from API is not an object:', response.data);
