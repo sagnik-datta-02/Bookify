@@ -18,7 +18,6 @@ export default function App() {
           <Route exact path="/book/:id" element={<BookProductPage />} />
           <Route exact path="/bestsellers" element={<BestSellerPage />} />
           <Route exact path="/newarrivals" element={<NewArrivalsPage />} />
-          
       </Routes>
     </BrowserRouter>
   );

@@ -17,9 +17,6 @@ const MenuButtons = () => {
   };
 
   const handleGenresClick = () => {
-    // Handle click for Genres button, navigate to the corresponding page
-    // Replace 'genres-page' with the actual path of your Genres page
-    // For example: history.push('/genres');
   };
 
   const handleAllBooksClick = () => {

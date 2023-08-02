@@ -13,12 +13,10 @@ const LandingPage = () => {
   const navigate = useNavigate();
   return (
     <div>
-      {/* Navbar */}
       <PrimarySearchAppBar />
       
       <MenuButtons/>
       
-      {/* Welcome Section */}
       <section style={{ backgroundColor: '#f0f0f0', padding: '50px 0' }}>
         <Container maxWidth="md">
           <Grid container spacing={3} alignItems="center">
@@ -36,8 +34,6 @@ const LandingPage = () => {
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* Add an image or any visual content you want */}
-              {/* <img src="path_to_image" alt="Bookify" /> */}
             </Grid>
           </Grid>
         </Container>
@@ -46,12 +42,8 @@ const LandingPage = () => {
       </section>
         <Container maxWidth="md">
           <BestsellerSection/>
-          {/* Add the best sellers book cards here */}
         </Container>
       </section>
-
-      {/* Other Sections */}
-      {/* Add other sections with cards to redirect to hotsellers, new arrivals, genres, all books */}
       <Footer/>
     </div>
     

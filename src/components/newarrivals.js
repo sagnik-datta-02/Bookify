@@ -16,9 +16,7 @@ const NewArrivalsSection = () => {
 
   React.useEffect(() => {
     axios.get(`${baseURL}/all`).then((response) => {
-      // Make sure the response data is an object
       if (typeof response.data === 'object' && response.data !== null) {
-        // Convert the object to an array
         const bookArray = Object.values(response.data);
         console.log(bookArray);
         const bestsellers = bookArray[2].filter((book) => book.tags.includes('new arrivals'));
@@ -63,7 +61,7 @@ const NewArrivalsSection = () => {
                 </Typography>
               </CardContent>
               <div style={{
-                display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-between',
+                display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-evenly',
               
               }}>
                 <Button variant="outlined" color="primary" style={{padding:1 , paddingLeft:1}} onClick={()=>navigate(`/book/${book._id}`)}>

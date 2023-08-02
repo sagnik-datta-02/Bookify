@@ -9,19 +9,13 @@ import MenuButtons from '../components/Category';
 
 const baseURL = "https://bookify-back-end.vercel.app/books/get";
 const BookProductPage = () => {
-  // Replace this with actual book data
   const [book, setBook] = React.useState([]);
   const { id } = useParams();
   React.useEffect(() => {
     axios.get(`${baseURL}?book_id=${id}`).then((response) => {
-      // Make sure the response data is an object
       console.log(response.data.data);
-        
-        
        setBook(response.data.data);
         // setBestSellerData(bookArray[2]);
-
-     
     }).catch((error) => {
       console.error('Error fetching book data:', error);
     });
@@ -29,7 +23,6 @@ const BookProductPage = () => {
  
 
   const handleAddToCart = () => {
-    // Implement the logic to add the book to the cart
     console.log('Book added to cart');
   };
 
@@ -38,8 +31,6 @@ const BookProductPage = () => {
      <PrimarySearchAppBar></PrimarySearchAppBar>
       <MenuButtons></MenuButtons>
     <Container maxWidth="md" >
-     
-      
       <Paper elevation={3} sx={{ padding: '20px', margin: '40px 0' }}>
         <Grid container spacing={2}>
           {/* Book Image */}

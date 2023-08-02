@@ -101,9 +101,7 @@ const BookShowcase = () => {
     const navigate= useNavigate();
     React.useEffect(() => {
       axios.get(`${baseURL}/genre/Romantic`).then((response) => {
-        // Make sure the response data is an object
         if (typeof response.data === 'object' && response.data !== null) {
-          // Convert the object to an array
           const bookArray = Object.values(response.data);
           console.log(bookArray);
           
@@ -124,13 +122,11 @@ const BookShowcase = () => {
         {bookData.map((book) => (
           <Card
             key={book.id}
-            sx={{
-              
+            sx={{              
               display: 'flex',
               flexDirection: 'column',
-             // alignItems: 'center', // Center the content horizontally
-              justifyContent: 'center', // Center the content vertically
-             height: '100%', // Ensure that the cards have equal height within the carousel
+              justifyContent: 'center', 
+             height: '100%', 
               boxShadow: 'none',
             }}
           >

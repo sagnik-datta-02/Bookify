@@ -13,7 +13,6 @@ import MenuButtons from '../components/Category';
 const BestSellerPage = () => {
     return (
       <div>
-        {/* Navbar */}
         <PrimarySearchAppBar />
         <MenuButtons/>
         <section style={{ backgroundColor: '#f0f0f0', padding: '50px 0' }}>

@@ -14,7 +14,6 @@ import NewArrivalsSection from '../components/newarrivals';
 const NewArrivalsPage = () => {
     return (
       <div>
-        {/* Navbar */}
         <PrimarySearchAppBar />
         <MenuButtons/>
         <section style={{ backgroundColor: '#f0f0f0', padding: '50px 0' }}>

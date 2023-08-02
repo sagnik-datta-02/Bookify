@@ -63,13 +63,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const navigate= useNavigate();
   const [leftMenuOpen, setLeftMenuOpen] = React.useState(null);
-
-  // Function to handle opening the left-side menu
   const handleLeftMenuOpen = (event) => {
     setLeftMenuOpen(event.currentTarget);
   };
-
-  // Function to handle closing the left-side menu
   const handleLeftMenuClose = () => {
     setLeftMenuOpen(null);
   };

@@ -17,9 +17,7 @@ const BestsellerSection = () => {
 
   React.useEffect(() => {
     axios.get(`${baseURL}/all`).then((response) => {
-      // Make sure the response data is an object
       if (typeof response.data === 'object' && response.data !== null) {
-        // Convert the object to an array
         const bookArray = Object.values(response.data);
         console.log(bookArray);
         const bestsellers = bookArray[2].filter((book) => book.tags.includes('bestseller'));

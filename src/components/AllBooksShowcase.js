@@ -17,9 +17,7 @@ const AllBooksShowcase = () => {
 
   React.useEffect(() => {
     axios.get(`${baseURL}/all`).then((response) => {
-      // Make sure the response data is an object
       if (typeof response.data === 'object' && response.data !== null) {
-        // Convert the object to an array
         const bookArray = Object.values(response.data);
         console.log(bookArray);
         setAllBookData(bookArray[2]);
@@ -43,7 +41,6 @@ const AllBooksShowcase = () => {
               <CardMedia
                 component="img"
                 sx={{
-
                   height: 200,
                   objectFit: 'contain',
                 }}
