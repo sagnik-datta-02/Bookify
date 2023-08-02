@@ -95,7 +95,7 @@ export default function PrimarySearchAppBar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+    <Menu 
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -110,8 +110,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem disabled onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem disabled onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -132,7 +132,7 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem disabled>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -140,7 +140,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem disabled>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -152,7 +152,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Cart</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem disabled onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
           aria-label="account of current user"
