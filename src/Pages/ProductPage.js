@@ -52,16 +52,16 @@ const BookProductPage = () => {
 
           {/* Book Details */}
           <Grid item xs={12} md={6}>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h3" gutterBottom>
               {book.name}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h4" gutterBottom>
               Author: {book.author}
             </Typography>
-            <Typography variant="h6" gutterBottom>
-              Price: {book.price}
+            <Typography variant="h5" gutterBottom>
+              Price: Rs {book.price}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               Genre: {book.genre}
             </Typography>
             <Typography variant="body1" gutterBottom>
