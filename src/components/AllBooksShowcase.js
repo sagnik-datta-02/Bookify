@@ -65,7 +65,7 @@ const AllBooksShowcase = () => {
                 <Button variant="outlined" color="primary" style={{padding:1 , paddingLeft:1}} onClick={() => navigate(`/book/${book._id}`)}>
                   Details
                 </Button>
-                <Button variant="contained" color="primary" style={{padding:1}}>
+                <Button variant="contained" color="primary" style={{padding:1}} disabled>
                   Cart
                 </Button>
               </div>

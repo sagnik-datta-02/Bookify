@@ -61,7 +61,7 @@ const NewArrivalsSection = () => {
                 </Typography>
               </CardContent>
               <div style={{
-                display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-evenly',
+                display: 'flex',  alignItems: 'flex-end',justifyContent: 'space-between',
               
               }}>
                 <Button variant="outlined" color="primary" style={{padding:1 , paddingLeft:1}} onClick={()=>navigate(`/book/${book._id}`)}>
