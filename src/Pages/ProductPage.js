@@ -13,7 +13,7 @@ const BookProductPage = () => {
   const { id } = useParams();
   React.useEffect(() => {
     axios.get(`${baseURL}?book_id=${id}`).then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
        setBook(response.data.data);
         // setBestSellerData(bookArray[2]);
     }).catch((error) => {
